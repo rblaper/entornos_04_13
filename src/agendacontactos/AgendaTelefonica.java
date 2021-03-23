@@ -100,15 +100,18 @@ public class AgendaTelefonica {
 		boolean encontrado =false; 
 		Contacto aux;
 		int i=0;
-		while (!encontrado && i< agenda.size()){
-		
-			aux = agenda.get(i);
-			if ( aux.getApellidos().compareToIgnoreCase(ape)==0 &&
-					aux.getNombre().compareToIgnoreCase(nom)==0)
-				encontrado= true;
-			else
-				i++;
-		} //fin del bucle while
+		//si la agenda no está vacía 
+		if (agenda.size()>0) {
+			while (!encontrado && i< agenda.size()){
+			
+				aux = agenda.get(i);
+				if ( aux.getApellidos().compareToIgnoreCase(ape)==0 &&
+						aux.getNombre().compareToIgnoreCase(nom)==0)
+					encontrado= true;
+				else
+					i++;
+			} //fin del bucle while
+		} //fin del if
 		//devolvemos la posición donde se encontró el contacto
 		return encontrado ? i : -1;
 	}
