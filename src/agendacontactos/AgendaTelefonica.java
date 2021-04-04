@@ -182,7 +182,7 @@ public class AgendaTelefonica {
 	     * En la ordenacion utiliza el metodo de insercien
 	     * @return:   array de objetos Contacto ordenados alfabeticamente
 	     */
-		    public Contacto[] obtenerListaOrdenada(){
+		    public void obtenerListaOrdenada(){
 		        
 		       Contacto[] listaOrdenada= new Contacto[this.agenda.size()];
 		       this.agenda.toArray(listaOrdenada);
@@ -211,7 +211,7 @@ public class AgendaTelefonica {
 	             for (Contacto c : listaOrdenada) {
 	            	 this.agenda.add(c);
 	             }
-		        return listaOrdenada;
+		        //return this.agenda;
 		        
 		    } //fin de la ordenación
 		        
@@ -236,7 +236,7 @@ public class AgendaTelefonica {
 	            }
 	        }
 	        //en el resto de casos c1 NO es mayor que c2
-	        return resultado;
+	       return resultado;
 	    }
 
 
