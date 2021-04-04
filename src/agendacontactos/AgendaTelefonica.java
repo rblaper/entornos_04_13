@@ -167,7 +167,7 @@ public class AgendaTelefonica {
 		public boolean eliminarContacto (String nom, String ape){
 			int indice= buscarContacto (nom, ape);
 			if (indice >0){
-				agenda.remove(indice);
+				this.agenda.remove(indice);
 				return true;
 			}
 			// en caso de no encontrarlo, devolvemos Falso
@@ -175,8 +175,70 @@ public class AgendaTelefonica {
 			
 		}
 		
-		
-	
-	
+		/**
+	     * Metodo para ordenar alfabaticamente (nombre y apellidos)
+	     * a partir de la lista de contactos. Se usa el metodo toArray() de  la 
+	     * clase ArrayList para obtener un array estatico con sus elementos
+	     * En la ordenacion utiliza el metodo de insercien
+	     * @return:   array de objetos Contacto ordenados alfabeticamente
+	     */
+		    public Contacto[] obtenerListaOrdenada(){
+		        
+		       Contacto[] listaOrdenada= new Contacto[this.agenda.size()];
+		       this.agenda.toArray(listaOrdenada);
+		        //ordenamos por el algoritmo de insercion
+		        
+		       Contacto auxiliar;
+		       boolean hayhueco;
+		        
+		        for (int i = 0; i < listaOrdenada.length; i++){
+		                    
+		             auxiliar = (Contacto)listaOrdenada[i];
+		             int j = i-1;
+		             hayhueco=false;
+		             
+		             while (j >=0 && !hayhueco){
+		                 if (esMayor((Contacto)listaOrdenada[j] ,auxiliar)){
+		                     listaOrdenada[j+1] = listaOrdenada[j];
+		                     j--;
+		                 } else
+		                     hayhueco=true;
+		            }
+		            listaOrdenada[j+1] = auxiliar;
+		        } //fin del bucle para
+		        
+	             this.agenda.clear();
+	             for (Contacto c : listaOrdenada) {
+	            	 this.agenda.add(c);
+	             }
+		        return listaOrdenada;
+		        
+		    } //fin de la ordenación
+		        
+	    /** 
+	     * Metodo para determinar si dados dos contactos, el primero es alfabaticamente
+	     *  posterior al segundo
+	     * @param c1: primer objeto Contacto
+	     * @param c2: segundo objeto Contacto
+	     * @return: true si el primer contacto es alfabaticamente mayor al segundo: false en otro caso
+	     */
+	    public static boolean esMayor (Contacto c1, Contacto c2){
+	        
+	        boolean resultado=false;
+	        //se comparan los apellidos
+	        if (c1.getApellidos().compareToIgnoreCase(c2.getApellidos())>0){
+	            resultado = true;
+	            //apellidos iguales
+	        } else if (c1.getApellidos().compareToIgnoreCase(c2.getApellidos())==0){
+	        	//se ordena por nombre
+	            if (c1.getNombre().compareToIgnoreCase(c2.getNombre())>0){
+	                resultado =true;
+	            }
+	        }
+	        //en el resto de casos c1 NO es mayor que c2
+	        return resultado;
+	    }
+
 
 }
+

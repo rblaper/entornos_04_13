@@ -15,8 +15,13 @@ public class Contacto {
 	
 	//patromes para validar expresiones regulares
 	
-	final String PATRON_NOMBRE="[A-Z][\\w\\s\\-&]{1,49}";
-	final String PATRON_APE="[A-Z][\\w\\s\\-&]{1,99}";
+	
+	final String PATRON_NOMBRE = "[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-]+{1,49}";
+	final String PATRON_APE = "[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-]+{1,99}";
+
+	
+	//final String PATRON_NOMBRE="[A-Z][\\w\\s\\-&]{1,49}";
+	//final String PATRON_APE="[A-Z][\\w\\s\\-&]{1,99}";
 	final String PATRON_TELE="([679]\\d{8})|(\\+\\d[\\d\\-]{19})";
 	
 	//constructor
